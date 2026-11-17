@@ -1,0 +1,251 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pesapal Business Growth, Withdrawals & Payments</title>
+  <link href="https://googleapis.com" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div id="toast-banner" class="toast-banner"></div>
+
+  <div class="pesapal-banner">
+    <div class="banner-bg"></div>
+    <div class="banner-overlay"></div>
+    <div class="bottom-curve"></div>
+    <div class="banner-content">
+      <p class="banner-hashtag">#ForMyBusinessThereIsPesapal</p>
+      <h1 class="banner-title">My Business Growth,<br>Starts with Pesapal</h1>
+    </div>
+    <div class="banner-visual">
+      <div class="swoosh-ring"></div>
+      <img src="https://unsplash.com" alt="Business owner smiling" class="person-img" />
+    </div>
+  </div>
+
+  <div class="cards-grid">
+
+    <div class="feature-card">
+      <div class="card-header">
+        <h2>Effortlessly Schedule<br>Business Withdrawals</h2>
+        <p>Easily set up and automate withdrawals to manage your business funds on your terms.</p>
+      </div>
+      <div class="card-body">
+        <div class="pesapal-logo">
+          <span class="logo-pesa">pesa</span><span class="logo-pal">pal</span><span class="logo-biz">Biz</span>
+        </div>
+        <form class="form-container" id="schedule-form" novalidate>
+          <div class="step-header">
+            <span class="step-title">Step 1</span>
+            <a href="#" class="info-link" data-info="Automated withdrawals transfer settled funds directly to your business bank account.">Info <i class="info-icon">i</i></a>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Select Currency</label>
+            <div class="radio-row">
+              <label class="radio-option currency-kes"><input type="radio" name="currency" value="KES" checked /> KES</label>
+              <label class="radio-option currency-usd"><input type="radio" name="currency" value="USD" /> USD</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="frequency">Transfer Frequency*</label>
+            <select id="frequency" class="form-control">
+              <option value="monthly" selected>Monthly</option>
+              <option value="weekly">Weekly</option>
+              <option value="daily">Daily</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="checkbox-row"><input type="checkbox" id="keep-cycle" /> Keep Cycle Day/Date</label>
+            <a href="#" class="info-link" data-info="Keeps your payout anchored to the exact calendar day every month or week.">More Info <i class="info-icon">i</i></a>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="next-processing">Next Processing*</label>
+            <div class="date-input-wrap">
+              <input type="text" id="next-processing" class="form-control" placeholder="eg. 18-Nov-2026" />
+              <span class="calendar-icon">📅</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="default-bank">Default Bank*</label>
+            <select id="default-bank" class="form-control">
+              <option value="" disabled selected>Select your bank</option>
+              <option value="Equity Bank">Equity Bank</option>
+              <option value="KCB Bank">KCB Bank</option>
+              <option value="Co-operative Bank">Co-operative Bank</option>
+              <option value="Absa Bank">Absa Bank</option>
+            </select>
+          </div>
+          <button type="submit" class="save-schedule-btn">SAVE WITHDRAWAL SCHEDULE</button>
+        </form>
+      </div>
+    </div>
+    <div class="feature-card">
+      <div class="card-header">
+        <h2>Accept Payments,<br>Manage Transactions</h2>
+        <p>Seamless payment solutions to track sales and grow your business</p>
+      </div>
+      <div class="phone-wrapper">
+        <div class="phone-frame">
+          <div class="phone-top-section">
+            <div class="status-bar">
+              <span>•••• Pesapal</span>
+              <span>9:42 AM</span>
+              <span>84% 🔋</span>
+            </div>
+            <div class="app-nav">
+              <span class="nav-icon" id="nav-settings" title="Settings">⚙️</span>
+              <span class="app-brand">pesapal<sup>Biz</sup></span>
+              <span class="nav-icon" id="nav-alerts" title="Notifications">🔔</span>
+            </div>
+            <div class="branch-label">Live Tests - Gigiri Village Market</div>
+          </div>
+          <div class="balance-box">
+            <div class="balance-heading">Balance</div>
+            <div class="balance-amounts">
+              <div class="bal-col"><span class="bal-kes">KES</span><strong>912,720</strong></div>
+              <div class="bal-col"><span class="bal-usd">USD</span><strong>22,985</strong></div>
+            </div>
+            <div class="hide-balance">👁️ Hide Balance</div>
+            <button type="button" class="withdraw-btn">WITHDRAW FUNDS</button>
+          </div>
+          <div class="section-pad">
+            <div class="mini-title">Quick Actions</div>
+            <div class="quick-actions-row">
+              <button type="button" class="action-tile active-tile" data-action="Transactions"><span>⇄</span>Transactions</button>
+              <button type="button" class="action-tile" data-action="Statements"><span>📄</span>Statements</button>
+              <button type="button" class="action-tile" data-action="Invoices"><span>🧾</span>Invoices</button>
+            </div>
+            <div id="action-panel" class="action-panel hidden"></div>
+            <div class="tx-header">
+              <span class="mini-title" style="margin-bottom: 0;">Latest Transactions</span>
+              <a href="#" id="view-more-btn" class="view-more">View More</a>
+            </div>
+            <div class="tx-list" id="tx-list">
+              <div class="tx-item highlighted">
+                <div class="tx-left">
+                  <div class="tx-badge badge-mc">MC</div>
+                  <div>
+                    <div class="tx-name">Millicent Makina</div>
+                    <div class="tx-sub">POS - Gigiri Village Market</div>
+                    <div class="status-ok">Completed</div>
+                  </div>
+                </div>
+                <div class="tx-right">
+                  <div class="tx-amt">KES 12,450.00</div>
+                  <div class="tx-date">17/11/2026, 1:38 pm</div>
+                </div>
+              </div>
+              <div class="tx-item">
+                <div class="tx-left">
+                  <div class="tx-badge badge-mpesa">M</div>
+                  <div>
+                    <div class="tx-name">Wanjiru Samuel</div>
+                    <div class="tx-sub">Mpesa - Gigiri Village Market</div>
+                    <div class="status-fail">Failed</div>
+                  </div>
+                </div>
+                <div class="tx-right">
+                  <div class="tx-amt">KES 1,000.00</div>
+                  <div class="tx-date">17/11/2026, 12:15 pm</div>
+                </div>
+              </div>
+              <div class="tx-item">
+                <div class="tx-left">
+                  <div class="tx-badge badge-visa">VISA</div>
+                  <div>
+                    <div class="tx-name">Brian Maidunda</div>
+                    <div class="tx-sub">POS - Gigiri Village Market</div>
+                    <div class="status-pend">Pending</div>
+                  </div>
+                </div>
+                <div class="tx-right">
+                  <div class="tx-amt">KES 7,840.20</div>
+                  <div class="tx-date">16/11/2026, 4:50 pm</div>
+                </div>
+              </div>
+              <div class="tx-item extra-tx hidden">
+                <div class="tx-left">
+                  <div class="tx-badge badge-mpesa">M</div>
+                  <div>
+                    <div class="tx-name">Grace Njeri</div>
+                    <div class="tx-sub">Mpesa - Gigiri Village Market</div>
+                    <div class="status-ok">Completed</div>
+                  </div>
+                </div>
+                <div class="tx-right">
+                  <div class="tx-amt">KES 4,200.00</div>
+                  <div class="tx-date">16/11/2026, 11:05 am</div>
+                </div>
+              </div>
+              <div class="tx-item extra-tx hidden">
+                <div class="tx-left">
+                  <div class="tx-badge badge-visa">VISA</div>
+                  <div>
+                    <div class="tx-name">David Ochieng</div>
+                    <div class="tx-sub">POS - Gigiri Village Market</div>
+                    <div class="status-ok">Completed</div>
+                  </div>
+                </div>
+                <div class="tx-right">
+                  <div class="tx-amt">KES 19,500.00</div>
+                  <div class="tx-date">15/11/2026, 3:22 pm</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="feature-card">
+      <div class="card-header">
+        <h2>Track Performance,<br>Download Statements</h2>
+        <p>Monitor daily revenue trends and export reconciled reports for easy accounting.</p>
+      </div>
+      <div class="card-body">
+        <div class="pesapal-logo">
+          <span class="logo-pesa">pesa</span><span class="logo-pal">pal</span><span class="logo-biz">Biz</span>
+        </div>
+        <div class="form-container">
+          <div class="step-header">
+            <span class="step-title">Step 3</span>
+            <a href="#" class="info-link" data-info="Click any day bar below to inspect daily settled revenue.">Reports <i class="info-icon">i</i></a>
+          </div>
+          <div class="stats-row">
+            <div class="stat-box">
+              <div class="stat-label">Weekly Sales</div>
+              <div class="stat-value">KES 485,200</div>
+              <div class="stat-trend">+14.2% vs last wk</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-label">Settled Payouts</div>
+              <div class="stat-value">KES 410,000</div>
+              <div class="stat-trend">Auto-scheduled</div>
+            </div>
+          </div>
+          <div class="chart-box">
+            <div class="mini-title">Revenue Breakdown (KES)</div>
+            <div class="chart-bars">
+              <div class="bar-col"><div class="bar-fill" style="height: 45%;"></div><span class="bar-day">Mon</span></div>
+              <div class="bar-col"><div class="bar-fill" style="height: 65%;"></div><span class="bar-day">Tue</span></div>
+              <div class="bar-col"><div class="bar-fill" style="height: 55%;"></div><span class="bar-day">Wed</span></div>
+              <div class="bar-col"><div class="bar-fill active" style="height: 92%;"></div><span class="bar-day">Thu</span></div>
+              <div class="bar-col"><div class="bar-fill" style="height: 75%;"></div><span class="bar-day">Fri</span></div>
+              <div class="bar-col"><div class="bar-fill" style="height: 60%;"></div><span class="bar-day">Sat</span></div>
+            </div>
+          </div>
+          <div class="export-row">
+            <span>November 2026 Statement</span>
+            <button type="button" class="export-btn">Download PDF</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
